@@ -1,4 +1,5 @@
-# 基于trocr(beit+roberta)实现对中文场景文字识别
+# 基于transformer ocr(beit+roberta)实现对中文场景文字识别
+在通用ocr场景进行微调，训练之前对图片进行排序，在测试集上准确率达95%
 trocr原地址(https://github.com/microsoft/unilm/tree/master/trocr)
 ## 实现功能
 - [x]  单行/多行文字/横竖排文字识别
