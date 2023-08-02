@@ -1,6 +1,7 @@
 # 基于transformer ocr(beit+roberta)实现对中文场景文字识别
 在通用ocr场景进行微调，训练之前对图片进行排序，在测试集上准确率达95%
 trocr原地址(https://github.com/microsoft/unilm/tree/master/trocr)
+转onnx需要transformers==2.25.0
 ## 实现功能
 - [x]  单行/多行文字/横竖排文字识别
 - [x]  不规则文字（印章，公式等）
@@ -104,6 +105,9 @@ python app.py --cust_data_init_weights_path hand-write --test_img test/hand.png
 
 ## output: '醒我的昏迷,偿还我的天真。'
 ```
+### 模型转onnx
+##### 拷贝checkpoint/trocr-custdata训练完成的pytorch_model.bin 到 ./cust-data/weights 目录下
+python -m transformers.onnx --model=./cust-data/weights/ --feature=vision2seq-lm onnx/ --atol 1e-4
 
 ## 训练技巧
 ###### 数据集较少时，可以采用数据增强的方法构造更多的数据，理论上几十万的数据（可不做数据增强，模型预训练已经见到过足够多的数据(票据类、证件类，打印、手写、拍照等场景)），可以收敛到90%以上的准确率（CER<0.05）   
