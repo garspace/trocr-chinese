@@ -109,6 +109,10 @@ python app.py --cust_data_init_weights_path hand-write --test_img test/hand.png
 ##### 拷贝checkpoint/trocr-custdata训练完成的pytorch_model.bin 到 ./cust-data/weights 目录下
 python -m transformers.onnx --model=./cust-data/weights/ --feature=vision2seq-lm onnx/ --atol 1e-4
 
+### 数据集##
+https://blog.csdn.net/jhsignal/article/details/107930105
+https://gitcode.net/mirrors/zcswdt/OCR_ICDAR_label_revise
+
 ## 训练技巧
 ###### 数据集较少时，可以采用数据增强的方法构造更多的数据，理论上几十万的数据（可不做数据增强，模型预训练已经见到过足够多的数据(票据类、证件类，打印、手写、拍照等场景)），可以收敛到90%以上的准确率（CER<0.05）   
 ###### 训练样本不要自己resize到384x384（后续会优化这个结构，目前预训练是384x384），保留原图即可，模型前处理processor会自动处理    
