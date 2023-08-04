@@ -9,11 +9,14 @@ if __name__=='__main__':
     parser.add_argument('--dataset_path', default="./dataset/train/*/*.jpg", type=str, help="自定义训练数字符集")
     args = parser.parse_args()
     paths = glob(args.dataset_path)
-    vocab = set()
+    vocab =[]
     for p in tqdm(paths):
-        with codecs.open(p, encoding='utf-8') as f:
-            txt = f.read().strip()
-        vocab.update(txt)
+       with open(p,'r',encoding='utf-8') as f:
+           label = f.readline().strip()
+           for c in set(label):
+               if c not in vocab:
+                  vocab.append(c)
+
     root_path = os.path.split(args.cust_vocab)
     os.makedirs(root_path, exist_ok=True)
     with open(args.cust_vocab, 'w') as f:
