@@ -2,8 +2,8 @@
 在通用ocr场景进行微调，训练之前对图片进行排序，在测试集上准确率达95%
 trocr原地址(https://github.com/microsoft/unilm/tree/master/trocr)
 # 问题
-init初始化权重transformers==4.15.0
-转onnx，train模型，需要transformers==4.30.0
+init初始化权重,train模型transformers==4.15.0
+转onnx，需要transformers==4.30.0
 ## 实现功能
 - [x]  单行/多行文字/横竖排文字识别
 - [x]  不规则文字（印章，公式等）
